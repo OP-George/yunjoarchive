@@ -24,6 +24,11 @@ export const metadata: Metadata = {
   },
   description: "윤조아카이브 - 수제 도자기 포트폴리오",
   keywords: ["수공예", "핸드메이드", "핸드메이드 도자기", "수제 도자기", "도자기", "세라믹", "윤조아카이브"],
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png" }],
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
   authors: [{ name: "yunjoarchive" }],
   creator: "yunjoarchive",
   openGraph: {
