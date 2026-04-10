@@ -74,9 +74,7 @@ export function CategorySection({ category, items }: CategorySectionProps) {
             {displayItems.map((item) => (
               <motion.a
                 key={item.id}
-                href={item.storeUrl}
-                target="_blank"
-                rel="noreferrer"
+                href={`/work/${encodeURIComponent(item.detailSlug)}`}
                 variants={imageItem}
                 className="group relative block aspect-square overflow-hidden bg-neutral-50"
               >

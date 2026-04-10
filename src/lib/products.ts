@@ -8,7 +8,7 @@ export type ShopItem = {
   title: string;
   category: ShopCategory;
   imageSrc: string;   // URL-encoded path for next/image
-  storeUrl: string;
+  detailSlug: string; // CSV F열: detail 폴더 이름
   description?: string;
   /** true = 메인 페이지 대표 노출 대상 (CSV A열 O) */
   featured: boolean;
@@ -41,15 +41,11 @@ export function getProducts(): ShopItem[] {
   const items: ShopItem[] = [];
 
   for (const line of dataLines) {
-    // 최대 7개 컬럼으로만 split (설명 필드에 쉼표가 있어도 안전하게)
     const parts = line.split(",");
     if (parts.length < 6) continue;
 
-    const [displayRaw, numRaw, categoryRaw, titleRaw, imageRaw, linkRaw, ...descParts] =
+    const [displayRaw, numRaw, categoryRaw, titleRaw, imageRaw, detailRaw, ...descParts] =
       parts;
-
-    const display = displayRaw.trim();
-    // work 페이지에서는 모든 제품 노출 (featured는 메인 페이지 대표 노출용)
 
     const filename = imageRaw.trim();
     // 한글·공백 파일명을 URL-safe하게 인코딩
@@ -62,19 +58,49 @@ export function getProducts(): ShopItem[] {
       )
       .join(".");
 
-    const link = linkRaw.trim();
-    const isValidUrl = link.startsWith("http");
-
     items.push({
       id: Number(numRaw.trim()),
       title: titleRaw.trim(),
       category: toCategory(categoryRaw),
       imageSrc: `/products/images/${encodedFilename}`,
-      storeUrl: isValidUrl ? link : "https://smartstore.naver.com/yunjoarchive",
+      detailSlug: detailRaw.trim(),
       description: descParts.join(",").trim() || undefined,
-      featured: display === "O",
+      featured: displayRaw.trim() === "O",
     });
   }
 
   return items;
+}
+
+/** detail 폴더 내 이미지 목록을 숫자 순서로 반환 */
+export function getDetailImages(slug: string): string[] {
+  const dirPath = path.join(
+    process.cwd(),
+    "public",
+    "products",
+    "images",
+    "detail",
+    slug
+  );
+
+  if (!fs.existsSync(dirPath)) return [];
+
+  try {
+    const files = fs
+      .readdirSync(dirPath)
+      .filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f))
+      .sort((a, b) => {
+        const numA = parseInt(a, 10);
+        const numB = parseInt(b, 10);
+        if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+        return a.localeCompare(b);
+      });
+
+    return files.map(
+      (f) =>
+        `/products/images/detail/${encodeURIComponent(slug)}/${encodeURIComponent(f)}`
+    );
+  } catch {
+    return [];
+  }
 }

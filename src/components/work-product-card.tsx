@@ -18,9 +18,7 @@ export const cardVariants = {
 export function WorkProductCard({ item }: { item: ShopItem }) {
   return (
     <motion.a
-      href={item.storeUrl}
-      target="_blank"
-      rel="noreferrer"
+      href={`/work/${encodeURIComponent(item.detailSlug)}`}
       variants={cardVariants}
       initial="hidden"
       whileInView="show"
