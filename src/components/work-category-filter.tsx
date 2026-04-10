@@ -26,7 +26,7 @@ export function WorkCategoryFilter({
             onClick={() => onChange(cat)}
             whileTap={{ scale: 0.96 }}
             className={[
-              "h-8 rounded-full border px-5 text-[0.72rem] tracking-wide transition-colors duration-300",
+              "h-8 rounded-full border px-5 text-[0.72rem] lowercase tracking-wide transition-colors duration-300",
               isActive
                 ? "border-foreground bg-foreground text-background"
                 : "border-[color:var(--border)] text-[color:var(--muted)] hover:border-foreground/40 hover:text-foreground",

@@ -5,19 +5,34 @@ import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { Container } from "@/components/container";
 import { WorkCategoryFilter, type FilterValue } from "@/components/work-category-filter";
 import { TypedTitle } from "@/components/typed-title";
+import { type ShopItem } from "@/lib/products";
 
 const VALID: FilterValue[] = ["All", "Object", "Tableware", "Pot"];
 
-export function WorkLayoutHeader() {
+interface WorkLayoutHeaderProps {
+  products: ShopItem[];
+}
+
+export function WorkLayoutHeader({ products }: WorkLayoutHeaderProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
 
   const isDetail = pathname !== "/work";
-  const catParam = searchParams.get("category") ?? "All";
-  const active: FilterValue = VALID.includes(catParam as FilterValue)
-    ? (catParam as FilterValue)
-    : "All";
+
+  let active: FilterValue = "All";
+
+  if (isDetail) {
+    // /work/{slug} 에서 slug 추출 후 해당 제품의 카테고리 적용
+    const slug = decodeURIComponent(pathname.split("/")[2] ?? "");
+    const product = products.find((p) => p.detailSlug === slug);
+    if (product) active = product.category;
+  } else {
+    const catParam = searchParams.get("category") ?? "All";
+    active = VALID.includes(catParam as FilterValue)
+      ? (catParam as FilterValue)
+      : "All";
+  }
 
   const handleChange = (v: FilterValue) => {
     router.push(v === "All" ? "/work" : `/work?category=${v}`);
@@ -48,7 +63,7 @@ export function WorkLayoutHeader() {
 
         {/* 카테고리 필터 */}
         <div className="space-y-3">
-          <p className="text-[0.7rem] uppercase tracking-[0.2em] text-[color:var(--faint)]">
+          <p className="text-[0.7rem] lowercase tracking-[0.2em] text-[color:var(--faint)]">
             category
           </p>
           <WorkCategoryFilter active={active} onChange={handleChange} />
