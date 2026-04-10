@@ -35,8 +35,7 @@ export function WorkProductCard({ item }: { item: ShopItem }) {
           alt={item.title}
           fill
           className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          unoptimized
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
         />
       </div>
 

@@ -86,7 +86,6 @@ export function CategorySection({ category, items }: CategorySectionProps) {
                   fill
                   className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
                   sizes="(max-width: 640px) 48vw, (max-width: 1024px) 22vw, 18vw"
-                  unoptimized
                 />
               </motion.a>
             ))}

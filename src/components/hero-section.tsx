@@ -47,7 +47,6 @@ export function HeroSection({ news }: HeroSectionProps) {
               className="object-cover object-center"
               sizes="(max-width: 896px) 100vw, 896px"
               priority
-              unoptimized
             />
           </motion.div>
 
