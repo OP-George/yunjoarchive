@@ -20,7 +20,7 @@ export default function ContactPage() {
           {/* ─── 페이지 헤더 ─── */}
           <div className="flex flex-col gap-1 py-10 sm:flex-row sm:items-end sm:justify-between sm:py-14">
             <div className="space-y-1">
-              <p className="text-[0.68rem] uppercase tracking-[0.22em] text-[color:var(--faint)]">
+              <p className="text-[0.68rem] lowercase tracking-[0.22em] text-[color:var(--faint)]">
                 yunjoarchive
               </p>
               <h1 className="text-[2rem] font-semibold tracking-[-0.03em] text-foreground sm:text-[2.6rem]">

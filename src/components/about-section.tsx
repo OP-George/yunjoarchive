@@ -55,7 +55,7 @@ export function AboutSection() {
           <div className="space-y-6 self-start">
             <motion.span
               variants={fadeUp}
-              className="block text-[1rem] leading-none text-foreground"
+              className="block text-[1.3rem] leading-none text-foreground sm:text-[1.7rem] lg:text-[2rem]"
             >
               ·
             </motion.span>
