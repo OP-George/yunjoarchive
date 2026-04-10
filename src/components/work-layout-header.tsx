@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { Container } from "@/components/container";
 import { WorkCategoryFilter, type FilterValue } from "@/components/work-category-filter";
@@ -52,12 +51,12 @@ export function WorkLayoutHeader({ products }: WorkLayoutHeaderProps) {
             </h1>
           </div>
           {isDetail && (
-            <Link
-              href="/work"
+            <button
+              onClick={() => router.back()}
               className="text-[0.75rem] text-[color:var(--muted)] transition-opacity hover:opacity-60"
             >
               ← back
-            </Link>
+            </button>
           )}
         </div>
 
