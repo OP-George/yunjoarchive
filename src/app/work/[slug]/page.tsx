@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/container";
+import { FadeImage } from "@/components/fade-image";
 import { getProducts, getDetailImages } from "@/lib/products";
 
 interface Props {
@@ -48,21 +48,12 @@ export default async function ProductDetailPage({ params }: Props) {
         ) : (
           <div className="flex flex-col gap-2 sm:gap-3">
             {images.map((src, i) => (
-              <div
+              <FadeImage
                 key={i}
-                className="relative w-full bg-neutral-100"
-              >
-                <Image
-                  src={src}
-                  alt={`${product.title} ${i + 1}`}
-                  width={896}
-                  height={1120}
-                  className="h-auto w-full"
-                  sizes="(max-width: 896px) 100vw, 896px"
-                  quality={78}
-                  priority={i < 2}
-                />
-              </div>
+                src={src}
+                alt={`${product.title} ${i + 1}`}
+                priority={i < 2}
+              />
             ))}
           </div>
         )}
