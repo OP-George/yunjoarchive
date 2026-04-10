@@ -48,7 +48,10 @@ export default async function ProductDetailPage({ params }: Props) {
         ) : (
           <div className="flex flex-col gap-2 sm:gap-3">
             {images.map((src, i) => (
-              <div key={i} className="relative w-full">
+              <div
+                key={i}
+                className="relative w-full bg-neutral-100"
+              >
                 <Image
                   src={src}
                   alt={`${product.title} ${i + 1}`}
@@ -56,8 +59,10 @@ export default async function ProductDetailPage({ params }: Props) {
                   height={1120}
                   className="h-auto w-full"
                   sizes="(max-width: 896px) 100vw, 896px"
-                  quality={82}
-                  priority={i === 0}
+                  quality={78}
+                  priority={i < 2}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAACf/EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AJQAB/9k="
                 />
               </div>
             ))}
