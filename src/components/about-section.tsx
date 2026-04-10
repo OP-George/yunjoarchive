@@ -49,7 +49,7 @@ export function AboutSection() {
         <div />
 
         {/* 오른쪽: 텍스트 + 이미지 */}
-        <div className="grid grid-cols-1 items-end gap-10 sm:grid-cols-[1fr_auto] sm:gap-12">
+        <div className="grid grid-cols-1 items-end gap-5 sm:grid-cols-[1fr_auto] sm:gap-12">
 
           {/* 텍스트 */}
           <div className="space-y-6 self-start">
@@ -87,7 +87,7 @@ export function AboutSection() {
           {/* 이미지 — 텍스트 하단보다 조금 더 아래 */}
           <motion.div
             variants={imageVariant}
-            className="flex translate-y-8 justify-center sm:justify-end"
+            className="flex sm:translate-y-8 justify-center sm:justify-end"
           >
             <Image
               src="/namecard.jpg"
@@ -95,8 +95,7 @@ export function AboutSection() {
               width={0}
               height={0}
               sizes="(max-width: 640px) 80vw, 300px"
-              className="h-auto w-full max-w-[280px] sm:max-w-[260px] lg:max-w-[300px]"
-              unoptimized
+              className="h-auto w-full sm:max-w-[260px] lg:max-w-[300px]"
             />
           </motion.div>
 
