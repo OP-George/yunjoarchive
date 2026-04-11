@@ -48,75 +48,69 @@ export function AboutSection() {
         {/* 왼쪽: spacer (카테고리 섹션 선 컬럼과 동일 너비) */}
         <div />
 
-        {/* 오른쪽: 텍스트 + 이미지 */}
-        <div className="grid grid-cols-1 items-end gap-5 sm:grid-cols-[1fr_auto] sm:gap-12">
+        {/* 오른쪽: 세로 단일 배치 */}
+        <div className="space-y-6">
 
-          {/* 텍스트 */}
-          <div className="space-y-6 self-start">
-            <motion.span
-              variants={fadeUp}
-              className="block text-[1.3rem] leading-none text-foreground sm:text-[1.7rem] lg:text-[2rem]"
-            >
-              ·
-            </motion.span>
-
-            <motion.div variants={fadeUp} className="space-y-0">
-              <h2 className="text-[1.3rem] font-semibold tracking-[0.18em] text-foreground sm:text-[1.7rem] lg:text-[2rem]">
-                yunjo
-              </h2>
-              <h2 className="text-[1.3rem] font-semibold tracking-[0.18em] text-foreground sm:text-[1.7rem] lg:text-[2rem]">
-                archive
-              </h2>
-            </motion.div>
-
-            <motion.div variants={fadeUp} className="flex items-center gap-3">
-              <span className="text-[0.72rem] lowercase tracking-[0.1em] text-foreground">
-                about
-              </span>
-              <div className="h-px w-8 bg-foreground/40" />
-            </motion.div>
-
-            <motion.p
-              variants={fadeUp}
-              className="max-w-sm text-[0.75rem] leading-[1.85] text-[color:var(--muted)]"
-            >
-              {DESCRIPTION}
-            </motion.p>
-
-            {/* 시그니처 라인 */}
-            <motion.div variants={fadeUp} className="max-w-sm space-y-2">
-              <h3 className="text-[0.75rem] font-semibold leading-snug text-foreground">
-                시그니처 라인
-              </h3>
-              <p className="text-[0.75rem] leading-[1.85] text-[color:var(--muted)]">
-                yunjoarchive의 대표 라인으로 파스텔 톤의 부드럽고 여린 느낌의 제품들이 주를 이룹니다. 특별한 유약 레시피를 사용하며, 심플하면서도 어디든 잘 어울리는 세련된 미감을 선사합니다.
-              </p>
-            </motion.div>
-
-            {/* 리미티드 라인 */}
-            <motion.div variants={fadeUp} className="max-w-sm space-y-2">
-              <h3 className="text-[0.75rem] font-semibold leading-snug text-foreground">
-                리미티드 라인
-              </h3>
-              <p className="text-[0.75rem] leading-[1.85] text-[color:var(--muted)]">
-                단 하나씩만 제작되는 원 앤 온리 제품으로 유니크한 희소가치를 지니고 있으며, 작고 귀여운 제품들이 주를 이룹니다. 시그니처 라인과는 다른 소지를 사용하거나 여러 질감의 유약을 이용하여 시각적, 촉각적 즐거움을 선사합니다.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* 이미지 — 텍스트 하단보다 조금 더 아래 */}
-          <motion.div
-            variants={imageVariant}
-            className="flex sm:translate-y-8 justify-center sm:justify-end"
+          <motion.span
+            variants={fadeUp}
+            className="block text-[1.3rem] leading-none text-foreground sm:text-[1.7rem] lg:text-[2rem]"
           >
+            ·
+          </motion.span>
+
+          <motion.div variants={fadeUp} className="space-y-0">
+            <h2 className="text-[1.3rem] font-semibold tracking-[0.18em] text-foreground sm:text-[1.7rem] lg:text-[2rem]">
+              yunjo
+            </h2>
+            <h2 className="text-[1.3rem] font-semibold tracking-[0.18em] text-foreground sm:text-[1.7rem] lg:text-[2rem]">
+              archive
+            </h2>
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="flex items-center gap-3">
+            <span className="text-[0.72rem] lowercase tracking-[0.1em] text-foreground">
+              about
+            </span>
+            <div className="h-px w-8 bg-foreground/40" />
+          </motion.div>
+
+          {/* namecard 이미지 — about 라인 아래, 설명 텍스트 위 */}
+          <motion.div variants={imageVariant} className="w-full">
             <Image
               src="/namecard.jpg"
               alt="Yunjoarchive namecard"
               width={0}
               height={0}
-              sizes="(max-width: 640px) 80vw, 300px"
-              className="h-auto w-full sm:max-w-[260px] lg:max-w-[300px]"
+              sizes="100vw"
+              className="h-auto w-full"
             />
+          </motion.div>
+
+          <motion.p
+            variants={fadeUp}
+            className="max-w-sm text-[0.75rem] leading-[1.85] text-[color:var(--muted)]"
+          >
+            {DESCRIPTION}
+          </motion.p>
+
+          {/* 시그니처 라인 */}
+          <motion.div variants={fadeUp} className="max-w-sm space-y-2">
+            <h3 className="text-[0.75rem] font-semibold leading-snug text-foreground">
+              시그니처 라인
+            </h3>
+            <p className="text-[0.75rem] leading-[1.85] text-[color:var(--muted)]">
+              yunjoarchive의 대표 라인으로 파스텔 톤의 부드럽고 여린 느낌의 제품들이 주를 이룹니다. 특별한 유약 레시피를 사용하며, 심플하면서도 어디든 잘 어울리는 세련된 미감을 선사합니다.
+            </p>
+          </motion.div>
+
+          {/* 리미티드 라인 */}
+          <motion.div variants={fadeUp} className="max-w-sm space-y-2">
+            <h3 className="text-[0.75rem] font-semibold leading-snug text-foreground">
+              리미티드 라인
+            </h3>
+            <p className="text-[0.75rem] leading-[1.85] text-[color:var(--muted)]">
+              단 하나씩만 제작되는 원 앤 온리 제품으로 유니크한 희소가치를 지니고 있으며, 작고 귀여운 제품들이 주를 이룹니다. 시그니처 라인과는 다른 소지를 사용하거나 여러 질감의 유약을 이용하여 시각적, 촉각적 즐거움을 선사합니다.
+            </p>
           </motion.div>
 
         </div>
