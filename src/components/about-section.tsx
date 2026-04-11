@@ -82,6 +82,26 @@ export function AboutSection() {
             >
               {DESCRIPTION}
             </motion.p>
+
+            {/* 시그니처 라인 */}
+            <motion.div variants={fadeUp} className="max-w-sm space-y-2">
+              <h3 className="text-[0.75rem] font-semibold leading-snug text-foreground">
+                시그니처 라인
+              </h3>
+              <p className="text-[0.75rem] leading-[1.85] text-[color:var(--muted)]">
+                yunjoarchive의 대표 라인으로 파스텔 톤의 부드럽고 여린 느낌의 제품들이 주를 이룹니다. 특별한 유약 레시피를 사용하며, 심플하면서도 어디든 잘 어울리는 세련된 미감을 선사합니다.
+              </p>
+            </motion.div>
+
+            {/* 리미티드 라인 */}
+            <motion.div variants={fadeUp} className="max-w-sm space-y-2">
+              <h3 className="text-[0.75rem] font-semibold leading-snug text-foreground">
+                리미티드 라인
+              </h3>
+              <p className="text-[0.75rem] leading-[1.85] text-[color:var(--muted)]">
+                단 하나씩만 제작되는 원 앤 온리 제품으로 유니크한 희소가치를 지니고 있으며, 작고 귀여운 제품들이 주를 이룹니다. 시그니처 라인과는 다른 소지를 사용하거나 여러 질감의 유약을 이용하여 시각적, 촉각적 즐거움을 선사합니다.
+              </p>
+            </motion.div>
           </div>
 
           {/* 이미지 — 텍스트 하단보다 조금 더 아래 */}
