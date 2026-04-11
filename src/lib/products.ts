@@ -17,9 +17,9 @@ export type ShopItem = {
 const VALID_CATEGORIES: ShopCategory[] = ["Object", "Tableware", "Pot"];
 
 function toCategory(raw: string): ShopCategory {
-  const v = raw.trim();
-  if ((VALID_CATEGORIES as string[]).includes(v)) return v as ShopCategory;
-  return "Object";
+  const v = raw.trim().toLowerCase();
+  const match = VALID_CATEGORIES.find((c) => c.toLowerCase() === v);
+  return match ?? "Object";
 }
 
 export function getProducts(): ShopItem[] {
