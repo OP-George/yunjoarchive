@@ -41,7 +41,8 @@ interface CategorySectionProps {
 export function CategorySection({ category, items }: CategorySectionProps) {
   if (items.length === 0) return null;
 
-  const displayItems = items.slice(0, 3);
+  // 모바일: 최대 4개(2×2), sm 이상: 최대 3개(4번째는 sm:hidden)
+  const displayItems = items.slice(0, 4);
 
   return (
     <motion.section
@@ -69,14 +70,17 @@ export function CategorySection({ category, items }: CategorySectionProps) {
             </p>
           </motion.div>
 
-          {/* 이미지 — 모바일 2열, sm 이상 3열 */}
+          {/* 이미지 — 모바일 2열(최대4개), sm 이상 3열(최대3개) */}
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
-            {displayItems.map((item) => (
+            {displayItems.map((item, idx) => (
               <motion.a
                 key={item.id}
                 href={`/work/${encodeURIComponent(item.detailSlug)}`}
                 variants={imageItem}
-                className="group relative block aspect-square overflow-hidden bg-neutral-50"
+                className={[
+                  "group relative block aspect-square overflow-hidden bg-neutral-50",
+                  idx === 3 ? "sm:hidden" : "",
+                ].join(" ")}
               >
                 <Image
                   src={item.imageSrc}

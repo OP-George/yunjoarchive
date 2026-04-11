@@ -39,7 +39,7 @@ export function WorkProductCard({ item }: { item: ShopItem }) {
 
       {/* meta */}
       <div className="mt-3 space-y-1">
-        <span className="text-[0.68rem] uppercase tracking-widest text-[color:var(--faint)]">
+        <span className="text-[0.68rem] lowercase tracking-widest text-[color:var(--faint)]">
           {item.category}
         </span>
         <h3 className="text-[0.88rem] font-medium tracking-tight text-foreground transition-opacity duration-500 group-hover:opacity-55">
