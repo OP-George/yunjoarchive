@@ -88,13 +88,13 @@ export function AboutSection() {
 
           <motion.p
             variants={fadeUp}
-            className="max-w-sm text-[0.75rem] leading-[1.85] text-[color:var(--muted)]"
+            className="text-[0.75rem] leading-[1.85] text-[color:var(--muted)]"
           >
             {DESCRIPTION}
           </motion.p>
 
           {/* 시그니처 라인 */}
-          <motion.div variants={fadeUp} className="max-w-sm space-y-2">
+          <motion.div variants={fadeUp} className="space-y-2">
             <h3 className="text-[0.75rem] font-semibold leading-snug text-foreground">
               시그니처 라인
             </h3>
@@ -104,7 +104,7 @@ export function AboutSection() {
           </motion.div>
 
           {/* 리미티드 라인 */}
-          <motion.div variants={fadeUp} className="max-w-sm space-y-2">
+          <motion.div variants={fadeUp} className="space-y-2">
             <h3 className="text-[0.75rem] font-semibold leading-snug text-foreground">
               리미티드 라인
             </h3>
