@@ -48,15 +48,20 @@ export function getProducts(): ShopItem[] {
       parts;
 
     const filename = imageRaw.trim();
-    // 한글·공백 파일명을 URL-safe하게 인코딩
+    // 경로 구분자(/)는 유지하고, 각 세그먼트의 한글·공백만 인코딩
     const encodedFilename = filename
-      .split(".")
-      .map((part, idx, arr) =>
-        idx === arr.length - 1
-          ? part.toLowerCase() // 확장자 소문자 통일
-          : encodeURIComponent(part)
+      .split("/")
+      .map((segment) =>
+        segment
+          .split(".")
+          .map((part, idx, arr) =>
+            idx === arr.length - 1
+              ? part.toLowerCase() // 확장자 소문자 통일
+              : encodeURIComponent(part)
+          )
+          .join(".")
       )
-      .join(".");
+      .join("/");
 
     items.push({
       id: Number(numRaw.trim()),
